@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="output.css">
+    <link
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body class="bg-gradient-to-r from-indigo-500 to-red-400">
+    <div id="background" class="w-full bg-gradient-to-r from-indigo-500 to-red-400 flex  justify-center box-border">
+        <div id="card" class="bg-white w-96   rounded-lg mt-24 p-3">
+            
+            <div id="heading" class="flex gap-3 font-Poppins font-bold pl-5 pt-8 text-xl mb-2">
+                To-do list
+                <i class="ri-todo-line"></i>
+            </div>
+            <div  class="font-Poppins  flex justify-between items-center bg-slate-100 pl-5 rounded-3xl mb-4">
+                <input type="text" id="inputbox" placeholder="Add a task..." class="flex-1 border-none bg-transparent outline-none font-light text-black">
+                <button id="btn" class="bg-orange-500 px-8 py-2 rounded-3xl text-white cursor-pointer">Add</button>
+            </div>
+            <div id="tasks" class="relative left-6 tasks">
+                <div class="flex gap-3">
+                    <div id="task_icon" class="flex flex-col text-2xl text-gray-400 cursor-pointer ">
+                        <!-- <i class="checked ri-checkbox-circle-fill text-orange-500 hover:bg-slate-200 px-1 rounded-full"></i>
+                        <i class="ri-circle-line hover:bg-slate-200 px-1 rounded-full"></i>
+                        <i class="ri-circle-line hover:bg-slate-200 px-1 rounded-full"></i> -->
+                    </div>
+                    <div id="TaskList" class="flex flex-col gap-2 pt-1 font-Poppins ">
+                        <!-- <h1 class=" checked line-through text-zinc-400">Task 1</h1>
+                        <h1>Task 2</h1>
+                        <h1>Task 3</h1> -->
+                    </div>
+                    
+                </div>
+                
+                <div class="absolute right-10 top-2">
+                    <div id="deleteIcon" class="flex flex-col gap-2 cursor-pointer">
+                        
+                        <!-- <span><i class=" hover:bg-slate-200 rounded-full px-1 ri-close-line"></i></span>
+                        <i class=" hover:bg-slate-200 rounded-full px-1 ri-close-line"></i>  -->
+                    </div>
+                    
+                </div>
+                
+            </div>
+           
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
