@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="output.css">
     <link
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+    
 </head>
 <body class="bg-gradient-to-r from-indigo-500 to-red-400">
     <div id="background" class="w-full bg-gradient-to-r from-indigo-500 to-red-400 flex  justify-center box-border">
@@ -20,40 +21,26 @@
                 <input type="text" id="inputbox" placeholder="Add a task..." class="flex-1 border-none bg-transparent outline-none font-light text-black">
                 <button id="btn" class="bg-orange-500 px-8 py-2 rounded-3xl text-white cursor-pointer">Add</button>
             </div>
-            <div id="tasks" class="relative left-6 tasks">
-                <!-- Try to do it in this format. Create Each tasks in this format instead of the other -->
-              <li>
-                <div>
-                  <i class="ri-circle-line hover:bg-slate-200 px-1 rounded-full">
-                </div>
-                <span>Text</span>
-                <i class=" hover:bg-slate-200 rounded-full px-1 ri-close-line"></i>
-              </li>
-              <!-- -------------------------------------------------------------- -->
-                <div class="flex gap-3">
-                    <div id="task_icon" class="flex flex-col text-2xl text-gray-400 cursor-pointer ">
-                        <!-- <i class="checked ri-checkbox-circle-fill text-orange-500 hover:bg-slate-200 px-1 rounded-full"></i>
-                        <i class="ri-circle-line hover:bg-slate-200 px-1 rounded-full"></i>
-                        <i class="ri-circle-line hover:bg-slate-200 px-1 rounded-full"></i> -->
-                    </div>
-                    <div id="TaskList" class="flex flex-col gap-2 pt-1 font-Poppins ">
-                        <!-- <h1 class=" checked line-through text-zinc-400">Task 1</h1>
-                        <h1>Task 2</h1>
-                        <h1>Task 3</h1> -->
-                    </div>
-                    
-                </div>
-                
-                <div class="absolute right-10 top-2">
-                    <div id="deleteIcon" class="flex flex-col gap-2 cursor-pointer">
+            
+            <div  class="">
+                <ul id="TaskLIst">
+                    <li>
+                        <div class="flex justify-between px-6">
+                            <div class="flex gap-4 checkedIcon">
+                                <!-- <div class="checked_box_Icon" ><i class=" text-2xl ri-checkbox-blank-circle-line hover:bg-slate-200 rounded-full px-1 py-1 cursor-pointer"></i></div> -->
+                                <!-- <div class="" ><i class="text-2xl ri-checkbox-circle-fill  hover:bg-slate-200  rounded-full px-1 py-1 cursor-pointer text-orange-500"></i></div>  -->
+                                <!-- <div class=" line-through font-Poppins pt-1">das</div>  -->
+                            </div>
+                            
+                            <!-- <div  class="flex"><i class="deleteIcon pt-1 ri-close-line hover:bg-slate-200 rounded-full px-2 pt-1 cursor-pointer"></i></div> -->
+                        </div>
                         
-                        <!-- <span><i class=" hover:bg-slate-200 rounded-full px-1 ri-close-line"></i></span>
-                        <i class=" hover:bg-slate-200 rounded-full px-1 ri-close-line"></i>  -->
-                    </div>
+                    </li>
                     
-                </div>
-                
+                </ul>
+
             </div>
+             
            
         </div>
     </div>
