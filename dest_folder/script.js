@@ -4,107 +4,55 @@ const inp_icon = document.querySelector(".checked_box_Icon");
 const button = document.querySelector("#btn");
 const deleteIcon = document.querySelector(".deleteIcon");
 const checkedIcon = document.querySelector(".checkedIcon");
-
-
-
+let array = [];
 
 button.addEventListener('click',function AddTask(){
+    // console.log(array);
     let taskname = inp_box.value;
-    if(taskname == ""){
+    if(!taskname){
         alert("Please enter a valid Task Name!");
+        return
     }
-    else {
-        let newLi = document.createElement("li");
-        newLi.innerHTML=`<div class="flex justify-between px-6">
+
+    let newLi = document.createElement("li");
+    newLi.innerHTML=`
+    <div class="pArEnT flex justify-between px-6">
         <div class="flex gap-4">
-            <div class="checkedIcon" ><i class=" text-2xl ri-checkbox-blank-circle-line hover:bg-slate-200 rounded-full px-1 py-1 cursor-pointer"></i></div>
+            <div class="checkedIcon" >
+                <i class="circle-icon text-2xl ri-checkbox-blank-circle-line hover:bg-slate-200 rounded-full px-1 py-1 cursor-pointer"></i>
+            </div>
             
             <div class="checkedIcon Taskitems font-Poppins pt-1">${taskname}</div>
+
         </div>
-        
-        <div   class="flex"><i class="deleteIcon pt-1 ri-close-line hover:bg-slate-200 rounded-full px-2 py-1 cursor-pointer"></i></div>
+        <div class="flex"><i class="deleteIcon transition duration-150 hover:rotate-90 rotate-0 pt-1 ri-close-line hover:bg-slate-200 rounded-full px-2 py-1 cursor-pointer"></i>
+        </div>
     </div>`;
-        
-        inp_list.appendChild(newLi);
-        
+    inp_list.appendChild(newLi);
+    const aux = {
+        checked: (!newLi.querySelector('.circle-icon').classList.contains('ri-checkbox-blank-circle-line')),
+        task: `${taskname}`
     }
-    inp_box.value="";
-
     
+    array.push(aux);
 
+    inp_box.value="";
 });
 
-inp_list.addEventListener( "click",function  taskCheck(e){
-   
-    const striped_text = document.createElement('div');
-    striped_text.classList.add('done','flex','justify-between','px-6');
-    striped_text.innerHTML=`<div class="flex gap-4 checkedIcon">
-    <div class="checked_box_Icon" ><i class=" text-2xl ri-checkbox-blank-circle-line hover:bg-slate-200 rounded-full px-1 py-1 cursor-pointer"></i></div>
-    <div class="" ><i class="text-2xl ri-checkbox-circle-fill  hover:bg-slate-200  rounded-full px-1 py-1 cursor-pointer text-orange-500"></i></div>
-    <div class=" line-through font-Poppins pt-1">das</div> 
-    </div>`
+inp_list.addEventListener("click", function(e) {
+    // console.log(e.target)
+    if (e.target.classList.contains("ri-checkbox-blank-circle-line") || e.target.classList.contains("ri-checkbox-circle-fill")) {
+        const taskItem = e.target.closest(".flex").querySelector(".Taskitems");
+        taskItem.classList.toggle("line-through");
+        const checkIcon = e.target;
+        checkIcon.classList.contains('ri-checkbox-blank-circle-line') ? checkIcon.classList.replace('ri-checkbox-blank-circle-line', 'ri-checkbox-circle-fill') : checkIcon.classList.replace('ri-checkbox-circle-fill', 'ri-checkbox-blank-circle-line');
 
-    if(e.target.tagName==='LI'){
-        e.target.classList.toggle("done");
+        if (checkIcon.classList.contains('ri-checkbox-circle-fill')) {
+            checkIcon.classList.add('text-orange-500');
+        }
+
+    } else if (e.target.classList.contains("deleteIcon")) {;
+        const taskItem = e.target.closest(".pArEnT");
+        taskItem.remove();
     }
-    else if(e.target.tagName=="I"){
-      
-      e.target.parentElement.remove();
-    }
-
-})
-
-
-
-
-
-
-
-
-// let tasks = [];
-
-// button.addEventListener('click', function AddTask() {
-//     let taskname = inp_box.value;
-//     if (taskname == "") {
-//         alert("Please enter a valid Task Name!");
-//     } else {
-//         // Add the task name to the tasks array
-//         tasks.push(taskname); //append
-
-//         // Clear the existing task list
-//         inp_list.innerHTML = "";
-
-//         // Use map function to create elements for each task
-//         tasks.map((task, index) => {
-//             let newH1 = document.createElement("h1");
-//             newH1.innerHTML = task;
-//             inp_list.appendChild(newH1);
-
-//             let newIcon = document.createElement("h2");
-//             newIcon.innerHTML = `<i class="ri-circle-line  hover:bg-slate-200 px-1 py-1 rounded-full"></i>`;
-//             inp_icon.appendChild(newIcon);
-
-//             let newDeleteIcon = document.createElement("h3");
-//             newDeleteIcon.innerHTML = `<h3><i class=" hover:bg-slate-200 rounded-full px-1 py-1 ri-close-line" onclick="deleteTask(${index})"></i></h3>`;
-//             deleteIcon.appendChild(newDeleteIcon);
-//         });
-//     }
-//     inp_box.value = "";
-// });
-
-// // Delete function
-// function deleteTask(index) {
-//     // Remove the task at the specified index from the tasks array
-//     tasks.splice(index, 1);
-
-//     // Remove the corresponding HTML elements from the DOM
-//     inp_list.removeChild(inp_list.childNodes[index]);
-//     inp_icon.removeChild(inp_icon.childNodes[index]);
-//     deleteIcon.removeChild(deleteIcon.childNodes[index]);
-
-//     // Update the indices of the remaining elements
-//     for (let i = index; i < tasks.length; i++) {
-//         let deleteIconElement = deleteIcon.childNodes[i].firstChild;
-//         deleteIconElement.setAttribute("onclick", `deleteTask(${i})`);
-//     }
-// }
+});
